@@ -1,0 +1,94 @@
+//Usually you will require both swing and awt packages
+// even if you are working with just swings.
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+public class Swing3AL
+{
+	  
+	   
+	   public Swing3AL()
+	   {
+		   prepareGUI();
+	   }
+	   
+	   public static void main(String args[]) 
+	    {
+		   
+	    	Swing3AL swingListener = new Swing3AL();
+	    	swingListener.showActionListenerDemo();
+	    }
+	   
+	   public static void prepareGUI()
+	   {
+		   //CreateFrame
+		   	JFrame frame= new JFrame("Chat Frame");
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        frame.setSize(500, 400);
+	        
+	        JLabel label = new JLabel("Enter Text");
+	        
+	        frame.addWindowListener(new WindowAdapter()
+	        	{
+	        	public void windowClosing(WindowEvent windowEvent)
+	        		{
+	        		System.exit(0);
+	        		}
+	        	});
+	        //Create MenuBar and add components at the top
+	        JMenuBar mb = new JMenuBar();
+	        JMenu m1 = new JMenu("FILE");
+	        JMenu m2 = new JMenu("Help");
+	        JMenu m3 = new JMenu("Edit");
+	        mb.add(m1);
+	        mb.add(m2);
+	        mb.add(m3);
+	        //Creates Item per menu option
+	        JMenuItem m11 = new JMenuItem("Open");
+	        JMenuItem m22 = new JMenuItem("Save as");
+	        JMenuItem m33 = new JMenuItem("Help Me");
+	        m1.add(m11);
+	        m1.add(m22);
+	        m2.add(m33);
+	        //Creating the panel at bottom and adding components
+	        JPanel panel = new JPanel(); // the panel is not visible in output
+	        
+	        JTextField tf = new JTextField(30); // accepts upto 30 characters
+	        //JButton send = new JButton("Send");
+	        JButton reset = new JButton("Reset");
+	        panel.add(label); // Components Added using Flow Layout
+	        panel.add(label); // Components Added using Flow Layout
+	        panel.add(tf);
+	        
+	        panel.add(reset);
+	        // Text Area at the Center
+	        JTextArea ta = new JTextArea();
+	        //Adding Components to the frame.
+	        frame.getContentPane().add(BorderLayout.SOUTH, panel);
+	        frame.getContentPane().add(BorderLayout.NORTH, mb);
+	        frame.getContentPane().add(BorderLayout.CENTER, ta);
+	        frame.setVisible(true);
+	   }
+    
+    
+    private void showActionListenerDemo()
+   {
+             
+
+       JPanel panel = new JPanel();      
+      // panel.setBackground(Color.magenta);            
+       JButton send = new JButton("Send");
+
+      // send.addActionListener(new CustomActionListener()); 
+       panel.add(send);
+       panel.add(panel);
+    }
+   // class CustomActionListener implements ActionListener
+   // {
+    //	JLabel label3 = new JLabel();
+     //  public void actionPerformed(ActionEvent e) {
+     //     label3.setText("Ok Button Clicked.");
+     //  }
+    //}
+}
